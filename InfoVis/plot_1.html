@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Scatter Plot with Dropdown Filter</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            background-color: #f5f5f5; /* Set background color to gray */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Add box shadow */
+        }
+
+        .container {
+            position: relative;
+            background-color: #fff; /* Set background color of the container to white */
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Add box shadow */
+        }
+
+        .canvas-container {
+            margin-bottom: 20px;
+        }
+
+        .controls {
+            position: absolute;
+            top: 50px;
+            right: 20px;
+        }
+
+        select {
+            padding: 8px;
+            font-size: 16px;
+            border: 1px solid #ccc; /* Add border */
+            border-radius: 4px; /* Add border radius */
+            background-color: #f9f9f9; /* Set background color */
+            -webkit-appearance: none; /* Remove default arrow in Safari */
+            -moz-appearance: none; /* Remove default arrow in Firefox */
+            appearance: none; /* Remove default arrow */
+            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="none" d="M0 0h24v24H0V0z"/><path fill="#000000" d="M7 10l5 5 5-5H7z"/></svg>'); /* Add custom arrow */
+            background-repeat: no-repeat;
+            background-position: right 8px center;
+            cursor: pointer;
+        }
+
+        .tooltip {
+            position: absolute;
+            background-color: rgba(0, 0, 0, 0.7); /* Set background color */
+            color: #fff; /* Set text color */
+            padding: 8px;
+            border-radius: 4px; /* Add border radius */
+            font-size: 14px;
+            z-index: 999; /* Set z-index to ensure it's on top of everything */
+            pointer-events: none; /* Ensure tooltip doesn't interfere with mouse events */
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2 style="text-align: center;">MPG vs Horsepower</h2> <!-- Title added here -->
+        <div class="canvas-container">
+            <svg id="scatterplot" width="800" height="600"></svg>
+        </div>
+        <div class="controls">
+            <p style="margin-bottom: 5px;">Filter:</p> <!-- Title added here -->
+            <select id="filter">
+                <option value="Horsepower">Horsepower</option> <!-- Default option changed to Horsepower -->
+                <option value="Cylinders">Cylinders</option>
+                <option value="Model Year">Model Year</option>
+            </select>
+        </div>
+    </div>
+
+    <div class="tooltip" style="opacity: 0;"></div> <!-- Tooltip added here -->
+
+    <script src="plot_1.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/d3@7"></script>
+</body>
+</html>
